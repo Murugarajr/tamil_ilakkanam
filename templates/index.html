@@ -1,20 +1,21 @@
-{% extends 'base.html' %}
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
 
 {% block body %}
 
 <h1>{{ the_title }}</h1>
 
-<ul>
-  <!-- note how items from routes in the the Python script are linked -->
-  <li><a href="{{ url_for('gift_list') }}">Gift List</a></li>
-  <li><a href="{{ url_for('new_gift') }}">New Gift</a></li>
-  <li><a href="{{ url_for('rm_gift') }}">Remove Gift</a></li>
-  <li><a href="{{ url_for('buy_gift') }}">Purchase Gift</a></li>
-  <li><a href="{{ url_for('report') }}">Report</a></li>
-</ul>
+<img alt="Photo: Wedding Gift" src="{{ url_for('static', filename='images/tamil1.png') }}" style="border: none; width: 100%;">
 
-<img alt="Photo: Wedding Gift" src="{{ url_for('static', filename='images/img2.jpeg') }}" style="border: none; width: 100%;">
+<div class="container">
 
-{{ table }}
+      <form class="form-signin" method="POST" action="/login">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        {{ form.hidden_tag() }}
+        {{ wtf.form_field(form.input_field) }}
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </form>
+
+    </div> <!-- /container -->
 
 {% endblock %}
